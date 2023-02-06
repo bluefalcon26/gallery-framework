@@ -1222,9 +1222,10 @@ class gui(QtGui.QWidget):
 
     if pg.Qt.QT_LIB == pg.Qt.PYQT4:
       pixmapImage = QtGui.QPixmap.grabWidget(self)
+      pixmapImage.scaled(500, 500)
       pixmapImage.save(f,"PNG")
     else:
-      pixmapImage = super(gui, self).grab()
+      pixmapImage = super(gui, self).grab(QRect(QPoint(100, 100), QSize(500, 500)))
       pixmapImage.save(f[0],"PNG")
 
   def get_git_version(self):
